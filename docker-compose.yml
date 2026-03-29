@@ -21,7 +21,7 @@ services:
     build: ./source/nginx
     container_name: news-nginx
     ports:
-      - "80:80"
+      - "32000:80"
     depends_on:
       - backend
       - frontend

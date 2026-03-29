@@ -15,7 +15,7 @@ NYT, BBC, CNBC에서 트럼프-이란 관련 뉴스를 10분마다 자동 수집
 docker-compose up --build
 ```
 
-브라우저에서 `http://localhost` 접속
+브라우저에서 `http://localhost:32000` 접속
 
 ## 프로젝트 구조
 

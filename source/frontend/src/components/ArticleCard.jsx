@@ -6,6 +6,12 @@ const SOURCE_COLORS = {
   CNBC: "#005594",
 };
 
+const SOURCE_LABELS = {
+  NYT: "뉴욕타임즈",
+  BBC: "BBC",
+  CNBC: "CNBC",
+};
+
 function ArticleCard({ article }) {
   const borderColor = SOURCE_COLORS[article.source] || "#666";
 
@@ -13,7 +19,7 @@ function ArticleCard({ article }) {
     <div className="article-card" style={{ borderLeft: `4px solid ${borderColor}` }}>
       <div className="article-header">
         <span className="source-badge" style={{ backgroundColor: borderColor }}>
-          {article.source}
+          {SOURCE_LABELS[article.source] || article.source}
         </span>
         <span className="article-time">
           {new Date(article.scraped_at).toLocaleString("ko-KR")}

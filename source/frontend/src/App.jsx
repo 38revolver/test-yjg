@@ -5,6 +5,12 @@ import "./App.css";
 const API_URL = "/api/articles";
 const REFRESH_INTERVAL = 10 * 60 * 1000; // 10분
 
+const SOURCE_LABELS = {
+  NYT: "뉴욕타임즈",
+  BBC: "BBC",
+  CNBC: "CNBC",
+};
+
 function App() {
   const [articles, setArticles] = useState([]);
   const [lastUpdated, setLastUpdated] = useState(null);
@@ -41,7 +47,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Trump-Iran 뉴스 모니터</h1>
+        <h1>트럼프-이란 뉴스 모니터</h1>
         <div className="header-info">
           <span className="update-time">
             마지막 업데이트:{" "}
@@ -66,7 +72,7 @@ function App() {
         ) : (
           Object.entries(grouped).map(([source, items]) => (
             <section key={source} className="source-section">
-              <h2 className="source-title">{source}</h2>
+              <h2 className="source-title">{SOURCE_LABELS[source] || source}</h2>
               {items.map((article) => (
                 <ArticleCard key={article.id} article={article} />
               ))}
@@ -76,7 +82,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>10분마다 자동 갱신 | NYT, BBC, CNBC</p>
+        <p>10분마다 자동 갱신 | 뉴욕타임즈, BBC, CNBC</p>
       </footer>
     </div>
   );
