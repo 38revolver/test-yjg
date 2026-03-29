@@ -1,0 +1,34 @@
+services:
+  backend:
+    build: ./source/backend
+    container_name: news-backend
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATA_DIR=/app/data
+    restart: unless-stopped
+    networks:
+      - news-net
+
+  frontend:
+    build: ./source/frontend
+    container_name: news-frontend
+    restart: unless-stopped
+    networks:
+      - news-net
+
+  nginx:
+    build: ./source/nginx
+    container_name: news-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      - frontend
+    restart: unless-stopped
+    networks:
+      - news-net
+
+networks:
+  news-net:
+    driver: bridge
