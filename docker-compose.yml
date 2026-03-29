@@ -6,6 +6,7 @@ services:
       - ./data:/app/data
     environment:
       - DATA_DIR=/app/data
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
     restart: unless-stopped
     networks:
       - news-net
